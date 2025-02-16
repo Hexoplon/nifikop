@@ -125,6 +125,19 @@ spec:
         name: {{ .Values.cluster.logbackConfig.replaceConfigMap.name }}
         namespace: {{ default .Release.Namespace .Values.cluster.logbackConfig.replaceConfigMap.namespace }}
     {{- end }}
+    authorizerConfig:
+    {{- if .Values.cluster.authorizerConfig.replaceTemplateSecretConfig }}
+      replaceTemplateSecretConfig:
+        data: {{ .Values.cluster.authorizerConfig.replaceTemplateSecretConfig.data }}
+        name: {{ .Values.cluster.authorizerConfig.replaceTemplateSecretConfig.name }}
+        namespace: {{ default .Release.Namespace .Values.cluster.authorizerConfig.replaceTemplateSecretConfig.namespace }}
+    {{- end }}
+    {{- if .Values.cluster.authorizerConfig.replaceTemplateConfigMap }}
+      replaceTemplateConfigMap:
+        data: {{ .Values.cluster.authorizerConfig.replaceTemplateConfigMap.data }}
+        name: {{ .Values.cluster.authorizerConfig.replaceTemplateConfigMap.name }}
+        namespace: {{ default .Release.Namespace .Values.cluster.authorizerConfig.replaceTemplateConfigMap.namespace }}
+    {{- end }}
     nifiProperties:
     {{- if .Values.cluster.nifiProperties.overrideSecretConfig }}
       overrideSecretConfig:
